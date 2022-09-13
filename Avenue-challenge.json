@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "1e485b00-f35b-484b-8dcf-07b8cd865bdc",
+		"name": "Avenue-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23311480"
+	},
+	"item": [
+		{
+			"name": "Obter clima",
+			"item": [
+				{
+					"name": "Cenário 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_body = pm.response.json();",
+									"",
+									"pm.test(\"Dado que quero obter o clima\", function(){",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"",
+									"});",
+									"",
+									"pm.test(\"Quando informo os parâmetros corretos\", function(){",
+									"    pm.response.to.have.status(200)",
+									"    pm.response.to.have.status(\"OK\")",
+									"",
+									"});",
+									"",
+									"pm.test(\"Então os parâmentros devem ser exibidos na url que consultei\", function(){",
+									"    pm.expect(\"https://api.openweathermap.org/data/2.5/weather?q=Maceió, br&appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br).to.eql(response_body.url\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openweathermap.org/data/2.5/weather?appid=e6edce3bf4c68369519ae6597a80f78d&q=Maceió, Alagoas, Brazil&lang=pt_br",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "e6edce3bf4c68369519ae6597a80f78d"
+								},
+								{
+									"key": "q",
+									"value": "Maceió, Alagoas, Brazil"
+								},
+								{
+									"key": "lang",
+									"value": "pt_br"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cenário 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_body = pm.response.json();",
+									"",
+									"pm.test(\"Dado que quero obter o clima\", function(){",
+									"    pm.response.to.be.notFound;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"",
+									"});",
+									"",
+									"pm.test(\"Quando informo Cidade e País corretos E Estado incorreto\", function(){",
+									"    pm.response.to.have.status(404)",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Então a URL deve retornar erro 404\", function(){",
+									"    pm.expect(\"https://api.openweathermap.org/data/2.5/weather?q=Maceió, br&appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br).to.eql(response_body.url\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openweathermap.org/data/2.5/weather?appid=e6edce3bf4c68369519ae6597a80f78d&q=Alagoas, Uk",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "e6edce3bf4c68369519ae6597a80f78d"
+								},
+								{
+									"key": "q",
+									"value": "Alagoas, Uk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cenário 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_body = pm.response.json();",
+									"",
+									"pm.test(\"Dado que quero obter o clima\", function(){",
+									"    pm.response.to.be.notFound;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"",
+									"});",
+									"",
+									"pm.test(\"Quando informo Cidade e País corretos E Estado incorreto\", function(){",
+									"    pm.response.to.have.status(404)",
+									"    pm.response.to.have.status(\"Not Found\")",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Então a URL deve retornar erro 404\", function(){",
+									"    pm.expect(\"https://api.openweathermap.org/data/2.5/weather?q=Maceió, br&appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br).to.eql(response_body.url\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openweathermap.org/data/2.5/weather?appid=e6edce3bf4c68369519ae6597a80f78d&q=Maceió, US",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "e6edce3bf4c68369519ae6597a80f78d"
+								},
+								{
+									"key": "q",
+									"value": "Maceió, US"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cenário 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_body = pm.response.json();",
+									"",
+									"pm.test(\"Dado que quero obter o clima\", function(){",
+									"    pm.response.to.be.badRequest;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"",
+									"});",
+									"",
+									"pm.test(\"Quando não informo a localização\", function(){",
+									"    pm.response.to.have.status(400)",
+									"    pm.response.to.have.status(\"Bad Request\")",
+									"",
+									"});",
+									"",
+									"pm.test(\"Então a URL deve retornar erro 400 \", function(){",
+									"    pm.expect(\"https://api.openweathermap.org/data/2.5/weather?q=Maceió, br&appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br).to.eql(response_body.url\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openweathermap.org/data/2.5/weather?appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "e6edce3bf4c68369519ae6597a80f78d"
+								},
+								{
+									"key": "lang",
+									"value": "pt_br"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cenário 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_body = pm.response.json();",
+									"",
+									"pm.test(\"Dado que quero obter o clima\", function(){",
+									"    pm.response.to.be.unauthorized;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"",
+									"});",
+									"",
+									"pm.test(\"Quando não informo a localização\", function(){",
+									"    pm.response.to.have.status(401)",
+									"    pm.response.to.have.status(\"Unauthorized\")",
+									"",
+									"});",
+									"",
+									"pm.test(\"Então a URL deve retornar erro 401 \", function(){",
+									"    pm.expect(\"https://api.openweathermap.org/data/2.5/weather?q=Maceió, br&appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br).to.eql(response_body.url\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openweathermap.org/data/2.5/weather?q=Maceió, Alagoas, BR&lang=pt_br",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Maceió, Alagoas, BR"
+								},
+								{
+									"key": "lang",
+									"value": "pt_br"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cenário 6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_body = pm.response.json();",
+									"",
+									"pm.test(\"Dado que quero obter o clima\", function(){",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"",
+									"});",
+									"",
+									"pm.test(\"Quando informo a linguagem ab_xy\", function(){",
+									"    pm.response.to.have.status(200)",
+									"    pm.response.to.have.status(\"OK\")",
+									"",
+									"});",
+									"",
+									"pm.test(\"Então os parâmentros devem ser exibidos na url que consultei em inglês\", function(){",
+									"    pm.expect(\"https://api.openweathermap.org/data/2.5/weather?q=Maceió, br&appid=e6edce3bf4c68369519ae6597a80f78d&lang=pt_br).to.eql(response_body.url\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openweathermap.org/data/2.5/weather?appid=e6edce3bf4c68369519ae6597a80f78d&q=Maceió, Alagoas, BR&lang=ab_xy",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openweathermap",
+								"org"
+							],
+							"path": [
+								"data",
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "e6edce3bf4c68369519ae6597a80f78d"
+								},
+								{
+									"key": "q",
+									"value": "Maceió, Alagoas, BR"
+								},
+								{
+									"key": "lang",
+									"value": "ab_xy"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
